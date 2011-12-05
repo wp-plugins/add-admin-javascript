@@ -1,0 +1,165 @@
+=== Add Admin JavaScript ===
+Contributors: coffee2code
+Donate link: http://coffee2code.com/donate
+Tags: admin, javascript, js, script, admin theme, customization, coffee2code
+Requires at least: 3.0
+Tested up to: 3.3
+Stable tag: 1.1
+Version: 1.1
+
+Interface for easily defining additional JavaScript (inline and/or by URL) to be added to all administration pages.
+
+
+== Description ==
+
+Interface for easily defining additional JavaScript (inline and/or by URL) to be added to all administration pages.
+
+Ever want to introduce custom dynamic functionality to your WordPress admin pages and otherwise harness the power of JavaScript?  Any modification you may want to do with JavaScript can be facilitated via this plugin.
+
+Using this plugin you'll easily be able to define additional JavaScript (inline and/or by URL) to be added to all administration pages.  You can define JavaScript to appear inline in the admin head, admin footer (recommended), or in the admin footer within a jQuery `jQuery(document).ready(function($)) {}` section, or reference JavaScript files to be linked in the page header.  The referenced JavaScript files will appear in the admin head first, listed in the order defined in the plugin's settings.  Then any inline admin head JavaScript is added to the admin head.  All values can be filtered for advanced customization (see Filters section).
+
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/add-admin-javascript/) | [Author Homepage](http://coffee2code.com)
+
+
+== Installation ==
+
+1. Unzip `add-admin-javascript.zip` inside the `/wp-content/plugins/` directory for your site (or install via the built-in WordPress plugin installer)
+1. Activate the plugin through the 'Plugins' admin menu in WordPress
+1. Go to "Appearance" -> "Admin JavaScript" and add some JavaScript to be added into all admin pages.
+
+
+== Frequently Asked Questions ==
+
+= Can I add JavaScript I defined via a file, or one that is hosted elsewhere? =
+
+Yes, via the "Admin JavaScript Files" input field on the plugin's settings page.
+
+= Can I limit what admin pages the JavaScript applies to? =
+
+No, not presently.  The JavaScript is added to every admin page on the site.
+
+= Can I limit what users the JavaScript applies to? =
+
+No, not presently.  The JavaScript is added for any user that can enter the admin section of the site.
+
+
+== Screenshots ==
+
+1. A screenshot of the plugin's admin settings page.
+
+
+== Filters ==
+
+The plugin exposes four filters for hooking.  Typically, these customizations would be put into your active theme's functions.php file, or used by another plugin.
+
+= c2c_add_admin_js_files (filter) =
+
+The 'c2c_add_admin_js_files' hook allows you to programmatically add to or
+customize any referenced JavaScript files defined in the "Admin JavaScript Files" field.
+
+Arguments:
+
+* $files (array): Array of JavaScript files
+
+Example:
+
+`
+add_filter( 'c2c_add_admin_js_files', 'my_admin_js_files' );
+function my_admin_js_files( $files ) {
+	$files[] = 'http://ajax.googleapis.com/ajax/libs/yui/2.8.1/build/yuiloader/yuiloader-min.js';
+	return $files;
+}
+`
+
+= c2c_add_admin_js_head (filter) =
+
+The 'c2c_add_admin_js_head' hook allows you to programmatically add to or
+customize any JavaScript to be put into the page head as defined in the
+"Admin JavaScript (in head)" field.
+
+Arguments:
+
+* $js (string): JavaScript
+
+Example:
+
+`
+add_filter( 'c2c_add_admin_js_head', 'my_add_head_js' );
+function my_add_head_js( $js ) {
+	$js .= "alert('Hello');";
+	return $js;
+}
+`
+
+= c2c_add_admin_js_footer (filter) =
+
+The 'c2c_add_admin_js_footer' hook allows you to programmatically add to or
+customize any JavaScript to be put into the page head as defined in the
+"Admin JavaScript (in footer)" field.
+
+Arguments:
+
+* $js (string): JavaScript
+
+Example:
+
+`
+add_filter( 'c2c_add_admin_js_footer', 'my_add_footer_js' );
+function my_add_footer_js( $js ) {
+	$js .= "alert('Hello');";
+	return $js;
+}
+`
+
+= c2c_add_admin_js_jq (filter) =
+
+The 'c2c_add_admin_js_jq' hook allows you to filter the jQuery JavaScript to be output in the footer of admin pages.
+The 'c2c_add_admin_js_jq' hook allows you to programmatically add to or
+customize any jQuery JS to be put into the page footer as defined in the
+"Admin jQuery JavaScript" field.
+
+Arguments:
+
+* $js_jq (string): String of jQuery JavaScript
+
+Example:
+
+`
+add_filter( 'c2c_add_admin_js_jq', 'my_add_jq' );
+function my_add_jq( $js_jq ) {
+	$js_jq .= "$('.hide_me').hide();";
+	return $js_jq;
+}
+`
+
+
+== Changelog ==
+
+= 1.1 =
+* Update plugin framework to 029
+* Save a static version of itself in class variable $instance
+* Discontinue use of global variable $c2c_add_admin_js to store instance
+* Explicitly declare all functions as public
+* Add __construct(), activation(), and uninstall()
+* Note compatibility through WP 3.3+
+* Drop compatibility with versions of WP older than 3.0
+* Expand most onscreen and documentation references from "JS" to "JavaScript"
+* Add .pot
+* Add screenshot
+* Add 'Domain Path' plugin header
+* Tweak description
+* Minor code formatting changes (spacing)
+* Update copyright date (2011)
+* Add plugin homepage and author links in description in readme.txt
+
+= 1.0 =
+* Initial release (not publicly released)
+
+
+== Upgrade Notice ==
+
+= 1.1 =
+Recommended update: renamed plugin (breaking backwards compatibility); noted compatibility through WP 3.3; dropped support for versions of WP older than 3.0; updated plugin framework; and more.
+
+= 1.0 =
+Initial public release!
