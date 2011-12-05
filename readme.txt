@@ -4,8 +4,8 @@ Donate link: http://coffee2code.com/donate
 Tags: admin, javascript, js, script, admin theme, customization, coffee2code
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.1
-Version: 1.1
+Stable tag: 1.1.1
+Version: 1.1.1
 
 Interface for easily defining additional JavaScript (inline and/or by URL) to be added to all administration pages.
 
