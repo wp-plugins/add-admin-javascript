@@ -135,6 +135,12 @@ function my_add_jq( $js_jq ) {
 
 == Changelog ==
 
+= 1.1.1 =
+* Fix typo in code example in Advanced Tips
+* Add addition help text for js_head to indicate use of js_foot is preferred
+* Update .pot
+* Update screenshot
+
 = 1.1 =
 * Update plugin framework to 029
 * Save a static version of itself in class variable $instance
@@ -157,6 +163,9 @@ function my_add_jq( $js_jq ) {
 
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+Trivial update: fixed typo in code example; updated screenshot
 
 = 1.1 =
 Recommended update: renamed plugin (breaking backwards compatibility); noted compatibility through WP 3.3; dropped support for versions of WP older than 3.0; updated plugin framework; and more.
